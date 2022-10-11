@@ -89,7 +89,7 @@ class Car {
   }
   drive(distance){
     this.odometer += distance
-    this.tank = this.tank - (distance / this.milesPerGallon)
+    this.tank = this.tank - Math.trunc((distance / this.milesPerGallon))
     if(this.tank === 0){
       return `I ran out of fuel at ${this.odometer} miles!`
     }
@@ -179,7 +179,8 @@ class Student extends Lambdasian {
     this.favSubjects = atters.favSubjects
    }
    listSubjects(){
-    stringOfSubjects = this.favSubjects.join(', ')
+    let stringOfSubjects = this.favSubjects.join(', ')
+    // stringOfSubjects = this.favSubjects.toString
     return `${stringOfSubjects}`
    }
    PRAssignment(subject){
@@ -208,13 +209,13 @@ console.log(stud.stringOfSubjects)
 */
 
 class ProjectManager extends Instructor{
-   constructor() {
+   constructor(atters) {
     super(atters)
     this.gradClassName = atters.gradClassName
     this.favInstructor = atters.favInstructor
    }
-   standup(slack) {
-    return `${this.name} announces to ${slack}, @channel standy times!`
+   standUp(channel) {
+    return `${this.name} announces to ${channel}, @channel standy times!`
    }
    debugsCode(student, subject) {
     return `${this.name} debugs ${student}'s code on ${subject}`
