@@ -207,8 +207,18 @@ console.log(stud.stringOfSubjects)
         + `debugsCode` a method that takes in a student object and a subject and returns `{name} debugs {student.name}'s code on {subject}`
 */
 
-class ProjectManager {
-   
+class ProjectManager extends Instructor{
+   constructor() {
+    super(atters)
+    this.gradClassName = atters.gradClassName
+    this.favInstructor = atters.favInstructor
+   }
+   standup(slack) {
+    return `${this.name} announces to ${slack}, @channel standy times!`
+   }
+   debugsCode(student, subject) {
+    return `${this.name} debugs ${student}'s code on ${subject}`
+   }
 }
 
 /*
