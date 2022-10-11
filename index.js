@@ -171,10 +171,28 @@ class Instructor extends Lambdasian {
         + `sprintChallenge` similar to PRAssignment but returns `student.name has begun sprint challenge on {subject}`
 */
 
-class Student {
-   
+class Student extends Lambdasian {
+   constructor(atters){
+    super(atters)
+    this.previousBackground = atters.previousBackground
+    this.className = atters.className
+    this.favSubjects = atters.favSubjects
+   }
+   listSubjects(){
+    stringOfSubjects = this.favSubjects.join(', ')
+    return `${stringOfSubjects}`
+   }
+   PRAssignment(subject){
+    return `${this.name} has submitted a PR for ${subject}`
+   }
+   sprintChallenge(subject){
+    return `${this.name} has begun sprint challenge on ${subject}`
+   }
 }
 
+const stud = new Student ({name: 'Joe', age: 12, location: 'Reno', previousBackground: 'person', className: 'web', favSubjects: ['JS','test']})
+console.log(stud)
+console.log(stud.stringOfSubjects)
 /*
   TASK 6
     - Write a ProjectManager class extending Instructor.
