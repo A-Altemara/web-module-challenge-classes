@@ -87,17 +87,21 @@ class Car {
   fill(gallons){
     this.tank += gallons
   }
-  drive(distance){
-    this.odometer += distance
+  drive(distance) {
+    let distancePoss = this.tank * this.milesPerGallon
     this.tank = this.tank - Math.trunc((distance / this.milesPerGallon))
-    if(this.tank === 0){
+    console.log(this.tank)
+    if (distancePoss > distance) {
+      this.odometer += distance
+    } else {
+      this.odometer = this.odometer + distancePoss
       return `I ran out of fuel at ${this.odometer} miles!`
     }
   }
 }
 const car = new Car('buick', 25);
 console.log(car.fill(50))
-console.log(car.drive(1250))
+console.log(car.drive(1350))
 console.log(car)
 
 
@@ -151,7 +155,7 @@ class Instructor extends Lambdasian {
     return `Today we are learning about ${subject}`
   }
   grade(student, subject) {
-    return `${student} receives a perfect score on ${subject}`
+    return `${student.name} receives a perfect score on ${subject}`
   }
 }
 
@@ -218,7 +222,7 @@ class ProjectManager extends Instructor{
     return `${this.name} announces to ${channel}, @channel standy times!`
    }
    debugsCode(student, subject) {
-    return `${this.name} debugs ${student}'s code on ${subject}`
+    return `${this.name} debugs ${student.name}'s code on ${subject}`
    }
 }
 
